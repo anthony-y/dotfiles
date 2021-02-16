@@ -129,7 +129,7 @@ set $ws10 "10"
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
+bindsym $mod+4 workspace number ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
@@ -191,18 +191,15 @@ exec_always --no-startup-id ~/.screenlayout/dual.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom
 
-default_border pixel 2 
-# default_border normal
+default_border pixel 1
 
 client.focused $border $background $text_colour $border $border
 
 gaps outer  10
 gaps inner  15
-gaps bottom  10
-gaps top     0
+gaps bottom  0
+gaps top     10
 # gaps top    10
 # gaps right  10
 # gaps left   10
-
-# for_window [class="Pub Crawl Brawl"] floating enable
 

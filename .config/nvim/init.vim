@@ -4,6 +4,7 @@ Plug 'scrooloose/nerdTree'
 Plug 'ayu-theme/ayu-vim'
 Plug 'eemed/sitruuna.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'sainnhe/gruvbox-material'
 " Plug 'TobiasDev/relaxed-dark', { 'rtp': 'neovim' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
@@ -27,9 +28,10 @@ set hidden
 let ayucolor="dark"
 " colorscheme onehalflight
 " colorscheme onehalfdark
-" colorscheme sitruuna
-colorscheme ayu
+colorscheme sitruuna
+" colorscheme ayu
 " colorscheme relaxed-dark
+" colorscheme gruvbox-material
 
 " Key bindings
 nnoremap <C-N> :bnext<CR>

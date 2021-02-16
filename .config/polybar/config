@@ -27,51 +27,42 @@ alert = #bd2c40
 nice_blue = #646680
 nice_purple = #9981a3
 nice_white = #fcfafc
-nice_orange = #f57242
-;nice_blue = #7c85c2
+nice_yellow = #c89148
+; nice_yellow = #f57242
+; nice_blue = #7c85c2
 
-[bar/main_bar]
-monitor = ${env:MONITOR:HDMI-2}
+[bar/common]
 width = 100%
 height = 35
-bottom = false
+bottom = true
 fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
-border-bottom-size = 3
-border-left-size = 20
-border-right-size = 20
-border-top-size = 15
+border-bottom-size = 0
+border-left-size = 19
+border-right-size = 19
+border-top-size = 0
 border-color = #00000000
-font-0 = "Fira Code:size=8"
-modules-left = i3
-modules-center = title
-modules-right = pulseaudio date
+font-0 = "Fira Code:size=9"
+
+[bar/main_bar]
+inherit = bar/common
+monitor = ${env:MONITOR:HDMI-2}
+modules-left = i3 
+modules-center = date 
+modules-right = pulseaudio
 tray-position = right
 tray-padding  = 20
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 [bar/second_bar]
+inherit = bar/common
 monitor = ${env:MONITOR:DVI-D-1}
-width = 100%
-height = 35
-bottom = false
-fixed-center = false
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
-border-bottom-size = 3
-border-left-size = 20
-border-right-size = 20
-border-top-size = 15
-border-color = #00000000
-font-0 = "Fira Code:size=8"
 modules-left = i3
-modules-center = title
+modules-center =
 modules-right = pulseaudio date
 
 [module/i3]
@@ -81,26 +72,28 @@ index-sort = true
 wrapping-scroll = false
 
 ; Each monitor has its own workspaces.
-pin-workspaces = false
+pin-workspaces = true
 label-mode-padding = 2
 label-mode-foreground = ${colors.nice_white}
 label-mode-background = #423a47
 
-; focused = Active workspace on focused monitor
+; Active workspace on focused monitor
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.nice_white}
 label-focused-padding = 2
 
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+; Inactive workspace on any monitor
+label-unfocused = %name%
 label-unfocused-padding = 2
 
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
+; Active workspace on unfocused monitor
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
-; urgent = Workspace with urgency hint set
+
+; Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
@@ -113,22 +106,6 @@ label = %title%
 label-maxlen = 256
 label-empty =
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #c96161
-label = "CPU %percentage:2%%"
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.nice_blue}
-label = "MEM %percentage_used%%"
-
 [module/date]
 type = internal/date
 interval = 1
@@ -136,17 +113,17 @@ date = " %d/%m/%Y "
 date-alt =
 time = %H:%M
 time-alt = %H:%M:%S
-format-padding = 2
+format-padding = 2 
 format-underline = ${colors.nice_purple}
-label = %{T1}%date%%{T-} %time%
+label = %time% %{T1}%date%%{T-}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 use-ui-max = true
 interval = 5
 format-volume = VOL <label-volume>
-format-volume-underline = ${colors.nice_orange}
-format-volume-padding = 1
+format-volume-underline = ${colors.nice_yellow}
+format-volume-padding = 3
 label-muted = MUTED
 label-muted-padding = 1
 label-muted-foreground = #666
