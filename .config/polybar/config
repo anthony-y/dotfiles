@@ -19,8 +19,7 @@
 [colors]
 background = #141414
 background-alt = #444
-foreground = #c7b193
-foreground-alt = #8f678c
+foreground = #ddc8aa
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -28,51 +27,50 @@ nice_blue = #646680
 nice_purple = #9981a3
 nice_white = #fcfafc
 nice_yellow = #c89148
+nice_green = #cdcda1
+; nice_green = #3db579
+; foreground-alt = #8f678c
+; foreground = #c7b193
 ; nice_yellow = #f57242
 ; nice_blue = #7c85c2
 
 [bar/common]
-width = 100%
-height = 35
-bottom = true
+height = 30
+bottom = false
 fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
+border-left = 0
+border-right = 0
 border-bottom-size = 0
-border-left-size = 19
-border-right-size = 19
 border-top-size = 0
 border-color = #00000000
 font-0 = "Fira Code:size=9"
 
 [bar/main_bar]
 inherit = bar/common
+width = 100%
 monitor = ${env:MONITOR:HDMI-2}
-modules-left = i3 
-modules-center = date 
+modules-left = i3
+modules-center = date
 modules-right = pulseaudio
 tray-position = right
-tray-padding  = 20
+tray-padding  = 10
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/second_bar]
-inherit = bar/common
+[bar/second_monitor]
+inherit = bar/second_monitor
 monitor = ${env:MONITOR:DVI-D-1}
-modules-left = i3
-modules-center =
-modules-right = pulseaudio date
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-
-; Each monitor has its own workspaces.
-pin-workspaces = true
+pin-workspaces = false
 label-mode-padding = 2
 label-mode-foreground = ${colors.nice_white}
 label-mode-background = #423a47
@@ -102,6 +100,7 @@ label-urgent-padding = 2
 type = internal/xwindow
 format = <label>
 format-underline = ${colors.nice_blue}
+format-padding = 10
 label = %title%
 label-maxlen = 256
 label-empty =
@@ -113,8 +112,8 @@ date = " %d/%m/%Y "
 date-alt =
 time = %H:%M
 time-alt = %H:%M:%S
-format-padding = 2 
-format-underline = ${colors.nice_purple}
+format-padding = 2
+format-underline = ${colors.nice_green}
 label = %time% %{T1}%date%%{T-}
 
 [module/pulseaudio]

@@ -15,7 +15,10 @@ set $background #202021
 set $foreground #202021
 
 # Light purple
-set $border #e6ddf0
+# set $border #e6ddf0
+
+# Light brown
+set $border #7e6349
 
 set $indicator_colour #805b7c
 set $text_colour #040404
@@ -158,6 +161,22 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id ~/.screenlayout/dual.sh
+# exec_always --no-startup-id ~/.screenlayout/dual_regular_orientation.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id picom
+exec --no-startup-id redshift
+
+default_border pixel 1
+
+client.focused $border $background $text_colour $border $border
+
+gaps outer   12
+gaps inner   7
+gaps bottom  5
+gaps top     5
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -182,24 +201,5 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
-
-exec_always --no-startup-id ~/.fehbg
-exec_always --no-startup-id ~/.screenlayout/dual.sh
-# exec_always --no-startup-id ~/.screenlayout/dual_regular_orientation.sh
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id picom
-
-default_border pixel 1
-
-client.focused $border $background $text_colour $border $border
-
-gaps outer  10
-gaps inner  15
-gaps bottom  0
-gaps top     10
-# gaps top    10
-# gaps right  10
-# gaps left   10
 

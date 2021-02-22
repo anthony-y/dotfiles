@@ -3,13 +3,13 @@ call plug#begin()
 Plug 'scrooloose/nerdTree'
 Plug 'ayu-theme/ayu-vim'
 Plug 'eemed/sitruuna.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'sainnhe/gruvbox-material'
-" Plug 'TobiasDev/relaxed-dark', { 'rtp': 'neovim' }
+Plug 'morhetz/gruvbox'
+Plug 'axvr/photon.vim'
+Plug 'dunstontc/vim-vscode-theme'
+Plug 'AlessandroYorba/Alduin'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
-
-" Plug 'ap/vim-buftabline'
 
 " Vars
 syntax on
@@ -26,17 +26,20 @@ set number
 set hidden
 
 let ayucolor="dark"
+let g:alduin_Shout_Dragon_Aspect = 1
 " colorscheme onehalflight
 " colorscheme onehalfdark
-colorscheme sitruuna
+" colorscheme sitruuna
 " colorscheme ayu
-" colorscheme relaxed-dark
 " colorscheme gruvbox-material
+" colorscheme gruvbox
+" colorscheme photon
+colorscheme alduin
 
 " Key bindings
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 nmap <F6> :NERDTreeToggle<CR>
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
