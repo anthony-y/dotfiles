@@ -28,6 +28,9 @@ nice_purple = #9981a3
 nice_white = #fcfafc
 nice_yellow = #c89148
 nice_green = #cdcda1
+nice_grey = #6a6a6a
+nice_pink = #F3A093
+; --- Alts ---
 ; nice_green = #3db579
 ; foreground-alt = #8f678c
 ; foreground = #c7b193
@@ -72,17 +75,18 @@ index-sort = true
 wrapping-scroll = false
 pin-workspaces = false
 label-mode-padding = 2
-label-mode-foreground = ${colors.nice_white}
+label-mode-foreground = ${colors.nice_grey}
 label-mode-background = #423a47
 
 ; Active workspace on focused monitor
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.nice_white}
+label-focused-underline= ${colors.nice_pink}
 label-focused-padding = 2
 
 ; Inactive workspace on any monitor
 label-unfocused = %name%
+label-unfocused-underline = ${colors.nice_grey}
 label-unfocused-padding = 2
 
 ; Active workspace on unfocused monitor
