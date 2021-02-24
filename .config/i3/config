@@ -3,44 +3,45 @@
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-#
 
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+# Windows key for mod
 set $mod Mod4
+
+###################################
+#           Window Stuff          #
+###################################
+gaps outer   5
+gaps inner   7
+gaps bottom  5
+gaps top     5
 
 set $background #202021
 set $foreground #202021
-
-# Light purple
-# set $border #e6ddf0
-
-# Light brown
-set $border #7e6349
-
+set $border_colour #Ceaf81
 set $indicator_colour #805b7c
 set $text_colour #040404
 
+default_border normal
+# default_border pixel 1
+
+client.focused $border_colour $background $text_colour $border_colour $border_colour
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
+font pango:monospace 8
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+#
+# Old colours
+#
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# set $border_colour #e6ddf0 # Light purple
+# set $border_colour #866A4C
+# set $border_colour #60864C
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+###################################
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -49,21 +50,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Return exec i3-sensible-terminal # start a terminal
+bindsym $mod+Shift+q kill # kill focused window
+bindsym $mod+d exec rofi -show run # run rofi launcher menu
 
 # change focus
 bindsym $mod+j focus left
@@ -115,6 +104,10 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+################################################################
+#                        Key bindings                          #
+################################################################
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -154,52 +147,53 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+c reload # reload the configuration file
+bindsym $mod+Shift+r restart # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+# Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-exec_always --no-startup-id ~/.fehbg
-exec_always --no-startup-id ~/.screenlayout/dual.sh
-# exec_always --no-startup-id ~/.screenlayout/dual_regular_orientation.sh
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id picom
-exec --no-startup-id redshift
+floating_modifier $mod # Use Mouse+$mod to drag floating windows
 
-default_border pixel 2
-
-client.focused $border $background $text_colour $border $border
-
-gaps outer   5
-gaps inner   7
-gaps bottom  5
-gaps top     5
-
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+        bindsym j resize shrink width 10 px or 10 ppt       # Pressing left will shrink the window’s width.
+        bindsym k resize grow height 10 px or 10 ppt        # Pressing right will grow the window’s width.
+        bindsym l resize shrink height 10 px or 10 ppt      # Pressing up will shrink the window’s height.
+        bindsym semicolon resize grow width 10 px or 10 ppt # Pressing down will grow the window’s height.
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
+        # Same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # Back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
+
+
+################################################################
+#                         Startup                              #
+################################################################
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id picom
+exec_always --no-startup-id ~/.screenlayout/dual.sh
+exec --no-startup-id redshift
+
+# Alt monitor orientation
+# exec_always --no-startup-id ~/.screenlayout/dual_regular_orientation.sh
 

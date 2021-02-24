@@ -29,8 +29,9 @@ nice_white = #fcfafc
 nice_yellow = #c89148
 nice_green = #cdcda1
 nice_grey = #6a6a6a
-nice_pink = #F3A093
+nice_orange = #8dc8ef
 ; --- Alts ---
+; nice_pink = #F3A093
 ; nice_green = #3db579
 ; foreground-alt = #8f678c
 ; foreground = #c7b193
@@ -81,7 +82,7 @@ label-mode-background = #423a47
 ; Active workspace on focused monitor
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.nice_pink}
+label-focused-underline= ${colors.nice_orange}
 label-focused-padding = 2
 
 ; Inactive workspace on any monitor
