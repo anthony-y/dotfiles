@@ -16,6 +16,8 @@ end
 set -x PROJECTA_DEVNAME anthony
 set -x PROJECTA_DEVPW   Thornham-9703
 
+set -x SYSTEMD_EDITOR /usr/bin/nvim
+
 alias dotfiles='/usr/bin/git --git-dir=/home/anthony/.dotfiles/ --work-tree=/home/anthony'
 alias cdgame='cd Code/turkey'
 alias turnoff='shutdown -P now'
