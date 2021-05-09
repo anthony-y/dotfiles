@@ -25,8 +25,8 @@ set wildmenu
 set number
 set hidden
 
-let ayucolor="dark"
-let g:alduin_Shout_Dragon_Aspect = 1
+let ayucolor="light"
+let g:alduin_Shout_Dragon_Aspect = 0
 " colorscheme onehalflight
 " colorscheme onehalfdark
 " colorscheme sitruuna
@@ -34,7 +34,8 @@ let g:alduin_Shout_Dragon_Aspect = 1
 " colorscheme gruvbox-material
 " colorscheme gruvbox
 " colorscheme photon
-colorscheme alduin
+" colorscheme alduin
+colorscheme dark_plus 
 
 " Key bindings
 nnoremap <C-N> :bnext<CR>

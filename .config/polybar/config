@@ -40,7 +40,7 @@ nice_orange = #8dc8ef
 
 [bar/common]
 height = 30
-bottom = false
+bottom = true
 fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}

@@ -10,8 +10,8 @@ set $mod Mod4
 ###################################
 #           Window Stuff          #
 ###################################
-gaps outer   10
-gaps inner   12
+gaps outer   15 
+gaps inner   10
 gaps bottom  5
 gaps top     10
 
@@ -21,10 +21,12 @@ set $border_colour #b79e7b
 set $border_outline #a89377
 set $indicator_colour #805b7c
 set $text_colour #040404
+set $nice_black #805b7c
 
 #default_border normal
-#default_border pixel 1
+default_border pixel 1
 
+# Border | Background | Text | Indicator | Child border
 client.focused $text_colour $text_colour $border_colour $border_colour $text_colour $text_colour
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -42,7 +44,9 @@ font pango:monospace 8
 # set $border_colour #866A4C
 # set $border_colour #60864C
 
-###################################
+################################################################
+#                        Key bindings                          #
+################################################################
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -53,7 +57,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 bindsym $mod+Return exec i3-sensible-terminal # start a terminal
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec rofi -show run # run rofi launcher menu
+bindsym $mod+d exec rofi -show drun
 
 # change focus
 bindsym $mod+j focus left
@@ -104,10 +108,6 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-
-################################################################
-#                        Key bindings                          #
-################################################################
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -176,6 +176,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym $mod+Shift+d exec --no-startup-id discord
+bindsym $mod+Shift+b exec --no-startup-id brave
+bindsym $mod+Shift+s exec --no-startup-id spotify
 
 ################################################################
 #                         Startup                              #
@@ -193,6 +196,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id ~/.fehbg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom
+exec_always --no-startup-id setxkbmap gb
 exec --no-startup-id redshift
 
 # Alt monitor orientation

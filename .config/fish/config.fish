@@ -3,7 +3,7 @@ function fish_greeting
 end
 
 function fish_prompt
-    set_color green
+    set_color purple
 	echo -n ""(whoami)""
 	set_color normal
 	echo -n "@"(cat /etc/hostname)" "
