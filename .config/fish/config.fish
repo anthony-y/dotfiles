@@ -7,7 +7,7 @@ function fish_prompt
 	echo -n ""(whoami)""
 	set_color normal
 	echo -n "@"(cat /etc/hostname)" "
-	set_color green
+	set_color blue
 	echo -n (prompt_pwd)
 	set_color normal
 	echo -n "> "
