@@ -1,4 +1,5 @@
 
 configuration {}
-// @import "/usr/share/rofi/themes/Arc-Dark.rasi"
-@import "/usr/share/rofi/themes/Monokai.rasi"
+@import "/usr/share/rofi/themes/Arc-Dark.rasi"
+// @import "/usr/share/rofi/themes/sidebar.rasi"
+// @import "/usr/share/rofi/themes/Monokai.rasi"
