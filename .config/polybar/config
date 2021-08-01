@@ -1,4 +1,4 @@
-;==========================================================
+; =============================================================
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -8,146 +8,133 @@
 ;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
+; =============================================================
+; This is just a heavily modified version of the default config
+; It has pretty icons and stuff :)
+;  - github.com/anthony-y
 ;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/polybar/polybar
-;
-;   The README contains a lot of information
-;
-;==========================================================
 
 [colors]
-background = #141414
-background-alt = #141414
-foreground = #fcfafc
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
-nice_blue = #646680
-nice_purple = #9981a3
-nice_white = #fcfafc
-nice_yellow = #c89148
-nice_green = #cdcda1
-nice_grey = #6a6a6a
-nice_orange = #8dc8ef
+background      = #141414
+background-alt  = #141414
+foreground      = #fcfafc
+primary         = #ffb52a
+secondary       = #e60053
+alert           = #bd2c40
+nice_blue       = #646680
+nice_purple     = #9981a3
+nice_white      = #fcfafc
+nice_orange    = #c89148
+nice_green     = #3db579
+nice_grey       = #6a6a6a
+nice_light_blue = #8dc8ef
+nice_cyan       = #2f8168
+nice_pink       = #ff6698
+nice_beige      = #b79e7b
 ; --- Alts ---
 ; background-alt = #1c142b
-; nice_pink = #F3A093
-; nice_green = #3db579
 ; foreground-alt = #8f678c
-; foreground = #ddc8aa
-; nice_yellow = #f57242
-; nice_blue = #7c85c2
+; foreground     = #ddc8aa
+; nice_green     = #cdcda1
+; nice_orange    = #f57242
+; nice_orange    = #b47c45
+; nice_blue      = #7c85c2
 
 [bar/common]
-height = 32
-bottom = false
+height       = 32
 fixed-center = true
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-color = #f00
+background   = ${colors.background}
+foreground   = ${colors.foreground}
 border-color = #00000000
+font-0       = "CaskaydiaCove Nerd Font Mono:size=11"
+font-1       = "CaskaydiaCove Nerd Font Mono:size=18;3"
 
 [bar/main_bar]
-inherit = bar/common
-width = 100%
-line-size = 4
-monitor = ${env:MONITOR:HDMI-A-1}
-; monitor = ${env:MONITOR:DVI-D-0}
-modules-left = i3
-modules-center = date
-modules-right = pulseaudio
-cursor-click = pointer
-cursor-scroll = ns-resize
-radius = 10.0
-border-left = 20
-border-right = 20
-border-top-size = 15
-font-0 = "Fira Code:size=11"
+inherit            = bar/common
+monitor            = ${env:MONITOR:HDMI-2}
+width              = 100%
+bottom             = false
+border-top-size    = 0
 border-bottom-size = 0
-[bar/bottom_bar]
-height = 25
-inherit = bar/common
-width = 100%
-bottom = true
-monitor = ${env:MONITOR:HDMI-A-1}
-modules-left = cpu
-tray-position = right
-tray-padding  = 10
-font-0 = "Fira Code:size=9"
+tray-position      = right
+tray-padding       = 10
+line-size          = 2
+cursor-click       = pointer
+cursor-scroll      = ns-resize
+modules-left       = date
+modules-center     = i3
+modules-right      = pulseaudio
 
 [module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
+type                     = internal/cpu
+interval                 = 2
+format-prefix            = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+format-underline         = #f90000
+label                    = %percentage:2%%
 
 [module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-pin-workspaces = false
-label-mode-padding = 2
+type                  = internal/i3
+format                = <label-state> <label-mode>
+index-sort            = true
+wrapping-scroll       = false
+pin-workspaces        = false
+label-mode-padding    = 2
 label-mode-foreground = ${colors.nice_grey}
 label-mode-background = #423a47
 
 ; Active workspace on focused monitor
-label-focused = %name%
+label-focused            = %name%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.nice_orange}
-label-focused-padding = 2
+label-focused-underline  = ${colors.nice_light_blue}
+label-focused-padding    = 2
 
 ; Inactive workspace on any monitor
-label-unfocused = %name%
+label-unfocused           = %name%
 label-unfocused-underline = ${colors.nice_grey}
-label-unfocused-padding = 2
+label-unfocused-padding   = 2
 
 ; Active workspace on unfocused monitor
-label-visible = %name%
+label-visible            = %name%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
+label-visible-underline  = ${self.label-focused-underline}
+label-visible-padding    = ${self.label-focused-padding}
 
 ; Workspace with urgency hint set
-label-urgent = %index%
+label-urgent            = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding    = 2
 
 [module/title]
-type = internal/xwindow
-format = <label>
+type             = internal/xwindow
+format           = <label>
 format-underline = ${colors.nice_purple}
-format-padding = 10
-label = %title%
-label-maxlen = 56
-label-empty =
+format-padding   = 10
+label            = %title%
+label-maxlen     = 56
+label-empty      =
 
 [module/date]
-type = internal/date
-interval = 1
-date = " %d/%m/%Y "
-date-alt =
-time = %H:%M
-time-alt = %H:%M:%S
-format-padding = 2
-format-underline = ${colors.nice_purple}
-label = %{T1}%date%%{T-}%time%
+type              = internal/date
+interval          = 1
+date              = " %d/%m/%Y "
+time              = %H:%M
+format-padding    = 2
+format-underline  = ${colors.nice_pink}
 format-background = ${colors.background-alt}
+label             = %{T2} %{T-}%time%  %{T2}%{T-}%date%
 
 [module/pulseaudio]
-type = internal/pulseaudio
-use-ui-max = true
-interval = 5
-format-volume = VOL  <label-volume>
-format-volume-underline = ${colors.nice_yellow}
-format-volume-padding = 3
+type                     = internal/pulseaudio
+use-ui-max               = true
+interval                 = 5
+format-volume            = %{T2} %{T-}<label-volume>
+format-volume-underline  = ${colors.nice_green}
+format-volume-padding    = 3
 format-volume-background = ${colors.background-alt}
-label-muted = MUTED
-label-muted-padding = 1
-label-muted-foreground = #666
+label-muted              = %{T2}婢%{T-} muted
+label-muted-padding      = 1
+label-muted-foreground   = #666
 
 [settings]
 screenchange-reload = true
@@ -155,4 +142,3 @@ screenchange-reload = true
 [global/wm]
 margin-top = 0
 margin-bottom = 0
-; vim:ft=dosini
